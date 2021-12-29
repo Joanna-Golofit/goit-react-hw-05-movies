@@ -21,7 +21,8 @@ function App() {
             return {
               // display: "block",
               margin: "1rem 0",
-              color: isActive ? "darkred" : "",
+              color: isActive ? "darkred" : "darkblue",
+              fontWeight: isActive ? "bold" : "",
               textDecoration: !isActive && "none",
             };
           }}
@@ -35,7 +36,8 @@ function App() {
             return {
               // display: "block",
               margin: "1rem 0",
-              color: isActive ? "darkred" : "",
+              color: isActive ? "darkred" : "darkblue",
+              fontWeight: isActive ? "bold" : "",
               textDecoration: !isActive && "none",
             };
           }}
@@ -47,7 +49,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
-        <Route path=":movieId" element={<MovieDetailsPage />}>
+        {/* <Route path=":movieId" element={<MovieDetailsPage />}> */}
+        <Route path="/movies/id" element={<MovieDetailsPage />}>
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>

@@ -1,5 +1,5 @@
 const Cast = () => {
-  return <div>Cast</div>;
+  return <div>Cast component</div>;
 }
 
 export default Cast

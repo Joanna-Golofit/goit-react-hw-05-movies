@@ -5,15 +5,20 @@ import { Link, Outlet } from "react-router-dom";
 const MoviesPage = () => {
   return (
     <div>
-      MoviesPage
-      <ul>additional information</ul>
-      <li>
-        <Link to="cast">Cast</Link>
-      </li>
-      <li>
-        <Link to="reviews">Reviews</Link>
-      </li>
-      {/* <Outlet/> */}
+      MoviesPage - strona wyszukiwania filmów po słowie kluczu.
+      <p>
+        <Link to="id">jakis znaleziony film z id</Link>
+      </p>
+      {/* <p>Additional information</p>
+      <ul>
+        <li>
+          <Link to="movieId/cast">Cast</Link>
+        </li>
+        <li>
+          <Link to="movieId/reviews">Reviews</Link>
+        </li>
+      </ul> */}
+      {/* <Outlet /> */}
     </div>
   );
 };
