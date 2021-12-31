@@ -17,7 +17,6 @@ const HomePage = () => {
         console.log("moj log z error.name", err.name);
         setError(err);
       })
-      .finally(() => console.log("finally"));
   }, []);
   return (
     <div>
@@ -36,7 +35,6 @@ const HomePage = () => {
            <Link to={`movies/${movie.id}`}>
         {movie.original_title}
             </Link>
-
         </li> 
          ))}
         {/* {
