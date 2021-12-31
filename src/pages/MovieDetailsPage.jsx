@@ -1,10 +1,15 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const MovieDetailsPage = () => {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <div>
+      <button onClick={() => navigate(-1)}>&larr; go back</button>
       <p style={{ color: "lightgreen" }}>
-       "&larr" GO BACK - navigate (-1) by sie przydal?
+        &larr; GO BACK - navigate (-1) by sie przydal?
       </p>
       MovieDetailsPage
       <p>zdjecie</p>
