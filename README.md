@@ -1,4 +1,6 @@
 # goit-react-hw-05-movies
+https://github.com/goitacademy/react-homework/blob/master/homework-04/README.pl.md 
+
 routing, Code Splitting, API themoviedb.org, propTypes, 
 
 
