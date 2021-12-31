@@ -4,13 +4,24 @@ const MovieDetailsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const goBack = () => {
-    
-    if (location.pathname !== "/movies/id") {
-      console.log("if location", location.pathname);
+    navigate(-1);
+    if (
+      location.pathname === "/movies/id/cast" ||
+      location.pathname === "/movies/id/reviews"
+    ) {
+      console.log("if location1", location.pathname);
       navigate(-1);
     }
-    navigate(-1);
-   
+    // if (location.pathname !== "/movies/id") {
+    //   console.log("if location2", location.pathname);
+    //   navigate(-1);
+    // }
+
+    // if (location.pathname === "/movies/id") {
+    //   console.log("if location - pathname === /movies/id", location.pathname);
+
+      // navigate(-1);
+    // }
   }
 
   console.log("currently", location.pathname);
