@@ -2,15 +2,21 @@ import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 
 const MovieDetailsPage = () => {
   const navigate = useNavigate();
-
   const location = useLocation();
-  console.log(location.pathname);
+  const goBack = () => {
+    
+    if (location.pathname !== "/movies/id") {
+      console.log("if location", location.pathname);
+      navigate(-1);
+    }
+    navigate(-1);
+   
+  }
+
+  console.log("currently", location.pathname);
   return (
     <div>
-      <button onClick={() => navigate(-1)}>&larr; go back</button>
-      <p style={{ color: "lightgreen" }}>
-        &larr; GO BACK - navigate (-1) by sie przydal?
-      </p>
+      <button onClick={goBack}>&larr; go back</button>
       MovieDetailsPage
       <p>zdjecie</p>
       <p>opis</p>
