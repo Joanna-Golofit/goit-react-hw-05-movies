@@ -22,19 +22,21 @@ const Cast = () => {
       });
   }, [movieId]);
 
-console.log("cos pobrano?" , fetchedDetails);
+// console.log("cos pobrano?" , fetchedDetails);
   return (
     <div>
       Cast component
       {error && <p>Whoops, something went wrong: {error.message}</p>}
       <ul>
-        {fetchedDetails.map(({ name, cast_id, character, profile_path }) => (
-          <li key={cast_id}>
-            <img src={profile_path} alt={name} />
-            <p>{name}</p>
-            <p>Character: {character}</p>
-          </li>
-        ))}
+        {fetchedDetails && fetchedDetails.map(
+          ({ name, cast_id, character, profile_path }) => (
+            <li key={cast_id}>
+              <img src={profile_path} alt={name} />
+              <p>{name}</p>
+              <p>Character: {character}</p>
+            </li>
+          )
+        )}
       </ul>
     </div>
   );
