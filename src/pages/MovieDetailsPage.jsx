@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { getApiData } from "./../utils/apiCalls";
 import { KEY } from "./../utils/apiKey";
+import style from "./MovieDetailsPage.module.css"
 
 const MovieDetailsPage = () => {
   const navigate = useNavigate();
@@ -15,12 +16,19 @@ const MovieDetailsPage = () => {
   const goBack = () => {
     navigate(-1);
     if (
-      location.pathname === "/movies/id/cast" ||
-      location.pathname === "/movies/id/reviews"
+      location.pathname === `/movies/${movieId}/cast` ||
+      location.pathname === `/movies/${movieId}/reviews`
     ) {
       console.log("if location1", location.pathname);
       navigate(-1);
     }
+    //  if (
+    //    location.pathname === `/movies/${movieId}/cast` ||
+    //    location.pathname === `/movies/${movieId}/reviews`
+    //  ) {
+    //    console.log("if location2", location.pathname);
+    //    navigate(-1);
+    //  }
    
   }
 
@@ -48,15 +56,19 @@ const MovieDetailsPage = () => {
   } = fetchedMovie;
   // const year = release_date.slice(0, 4);
   return (
-    <div>
+    // <div style={{ backgroundColor: "lightgreen" }}>
+    <div className={style.movieDetailsContainer}>
       <button onClick={goBack}>&larr; Go back</button>
-      MovieDetailsPage
+      {/* MovieDetailsPage */}
       {error && <p>Whoops, something went wrong: {error.message}</p>}
-      <div className="movie">
-        <div className="movieImg">
-          <img src={poster_path} alt={original_title} />
+      <div className={style.movie}>
+        <div className={style.movieImg}>
+          <img
+            src={`https://image.tmdb.org/t/p/w200${poster_path}`}
+            alt={original_title}
+          />
         </div>
-        <div className="movieDetails">
+        <div className={style.movieDetails}>
           <h1>
             {/* {original_title} ({release_date.slice(0, 4)}) */}
             {/* {original_title} ({year}) */}
@@ -66,7 +78,7 @@ const MovieDetailsPage = () => {
           <h2>Overview</h2>
           <p>{overview}</p>
           <h3>Genres</h3>
-          {/* <p>{genres.map((g) => g.name)}</p> */}
+          {/* <p>{genres.map((g) => g.name).join(", ")}</p> */}
         </div>
       </div>
       <hr />

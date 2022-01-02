@@ -13,7 +13,7 @@ function App() {
         style={{
           borderBottom: "solid 1px",
           padding: "1rem",
-          background: "gray",
+          background: "rgb(201, 201, 224)",
         }}
       >
         <NavLink
@@ -21,7 +21,7 @@ function App() {
             return {
               // display: "block",
               margin: "1rem 0",
-              color: isActive ? "darkred" : "darkblue",
+              color: isActive ? "darkblue" : "black",
               fontWeight: isActive ? "bold" : "",
               textDecoration: !isActive && "none",
             };
@@ -36,7 +36,7 @@ function App() {
             return {
               // display: "block",
               margin: "1rem 0",
-              color: isActive ? "darkred" : "darkblue",
+              color: isActive ? "darkblue" : "black",
               fontWeight: isActive ? "bold" : "",
               textDecoration: !isActive && "none",
             };
@@ -46,17 +46,18 @@ function App() {
           Movies
         </NavLink>
       </nav>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<MoviesPage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-        {/* <Route path="/movies/id" element={<MovieDetailsPage />}> */}
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
-        <Route path="*" element={<HomePage />} />
-      </Routes>
-      <div className="App">yyyy</div>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            {/* <Route path="/movies/id" element={<MovieDetailsPage />}> */}
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<HomePage />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

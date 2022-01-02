@@ -1,0 +1,15 @@
+.movieDetailsContainer {
+  margin: 8px;
+}
+
+.movie {
+ display: flex;
+}
+
+.movieImg {
+  margin: 10px 0;
+}
+
+.movieDetails {
+  margin: 0 10px ;
+}

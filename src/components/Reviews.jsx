@@ -24,12 +24,12 @@ const Reviews = () => {
 
   console.log("cos pobrano reviews?", fetchedDetails);
 
-  const { author } = fetchedDetails;
+  // const { author } = fetchedDetails;
   return (
     <div>
-      Reviews component
+      {/* Reviews component */}
       {error && <p>Whoops, something went wrong: {error.message}</p>}
-      {!fetchedDetails && "No review yet.."}
+      {fetchedDetails.length === 0 && "No review to be shown yet.."}
       <ul>
         {fetchedDetails &&
           fetchedDetails.map(({ id, content, author }) => (

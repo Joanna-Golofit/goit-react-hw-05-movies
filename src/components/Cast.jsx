@@ -25,13 +25,13 @@ const Cast = () => {
 // console.log("cos pobrano?" , fetchedDetails);
   return (
     <div>
-      Cast component
+      {/* Cast component */}
       {error && <p>Whoops, something went wrong: {error.message}</p>}
       <ul>
         {fetchedDetails && fetchedDetails.map(
           ({ name, cast_id, character, profile_path }) => (
             <li key={cast_id}>
-              <img src={profile_path} alt={name} />
+              <img src={`https://image.tmdb.org/t/p/w200${profile_path}` } width="80" alt={name} />
               <p>{name}</p>
               <p>Character: {character}</p>
             </li>
