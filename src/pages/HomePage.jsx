@@ -30,14 +30,7 @@ const HomePage = () => {
         {movie.original_title}
             </Link>
         </li> 
-         ))}
-        {/* {
-          <li key={fetchedMovies.id}>
-            <Link to={`movies/${fetchedMovies.id}`}>
-              {fetchedMovies.original_title}
-            </Link>
-          </li>
-        } */}
+         ))}     
       </ul>
     </div>
   );

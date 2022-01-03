@@ -14,6 +14,8 @@ const MovieDetailsPage = () => {
 
 
   const goBack = () => {
+      console.log("if location0", location.pathname);
+
     navigate(-1);
     if (
       location.pathname === `/movies/${movieId}/cast` ||
@@ -22,13 +24,12 @@ const MovieDetailsPage = () => {
       console.log("if location1", location.pathname);
       navigate(-1);
     }
-    //  if (
-    //    location.pathname === `/movies/${movieId}/cast` ||
-    //    location.pathname === `/movies/${movieId}/reviews`
-    //  ) {
-    //    console.log("if location2", location.pathname);
-    //    navigate(-1);
-    //  }
+    // if (
+    //   location.pathname === `/movies/${movieId}`
+    // ) {
+    //   console.log("if location2", location.pathname);
+    //   navigate(-1);
+    // }
    
   }
 
@@ -42,7 +43,7 @@ const MovieDetailsPage = () => {
         console.log("moj log z error.name", err.name);
         setError(err);
       });
-  }, [movieId]);
+  }, []);
 
   console.log("currently", location.pathname);
 
