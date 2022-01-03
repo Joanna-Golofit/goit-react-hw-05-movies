@@ -22,7 +22,6 @@ const Cast = () => {
       });
   }, [movieId]);
 
-// console.log("cos pobrano?" , fetchedDetails);
   return (
     <div>
       {/* Cast component */}

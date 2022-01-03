@@ -56,7 +56,6 @@ const MovieDetailsPage = () => {
   } = fetchedMovie;
   // const year = release_date.slice(0, 4);
   return (
-    // <div style={{ backgroundColor: "lightgreen" }}>
     <div className={style.movieDetailsContainer}>
       <button onClick={goBack}>&larr; Go back</button>
       {/* MovieDetailsPage */}

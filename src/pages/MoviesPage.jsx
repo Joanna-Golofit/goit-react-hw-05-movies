@@ -14,23 +14,23 @@ const MoviesPage = () => {
   const searchTerm = searchParams.get("title") || "";
 
   //odpali sie po kliknieciu Search
-  // const getData = () => {
-  //   if (searchTerm === "") {
-  //     return;
-  //   }
-  //   getApiData(
-  //     `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=${searchTerm}`
-  //   )
-  //     .then((data) => {
-  //       console.log("data.results z Api-query:", data.results);
-  //       console.log("fetchedMovies z Api-query:", fetchedMovies);
-  //       setFetchedMovies(data.results);
-  //     })
-  //     .catch((err) => {
-  //       console.log("moj log z error.name", err.name);
-  //       setError(err);
-  //     });
-  // };
+  const getData = () => {
+    if (searchTerm === "") {
+      return;
+    }
+    getApiData(
+      `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=${searchTerm}`
+    )
+      .then((data) => {
+        console.log("data.results z Api-query:", data.results);
+        console.log("fetchedMovies z Api-query:", fetchedMovies);
+        setFetchedMovies(data.results);
+      })
+      .catch((err) => {
+        console.log("moj log z error.name", err.name);
+        setError(err);
+      });
+  };
 
   //odpali sie "po powrwocie" - jesli beda jakies dane w searchTerm
   useEffect(() => {
@@ -48,7 +48,7 @@ const MoviesPage = () => {
         console.log("moj log z error.name", err.name);
         setError(err);
       });
-  }, [searchTerm]);
+  }, []);
 
   const handleFilter = (e) => {
     const title = e.target.value;
@@ -69,7 +69,7 @@ const MoviesPage = () => {
         onChange={handleFilter}
         // onSubmit={getData}
       />
-      {/* <button onClick={getData}>Search</button> */}
+      <button onClick={getData}>Search</button>
       <p></p>
       <ul>
         {fetchedMovies.map((movie) => (
