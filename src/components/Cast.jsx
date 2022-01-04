@@ -4,7 +4,7 @@ import { getApiData } from "./../utils/apiCalls";
 import { KEY } from "./../utils/apiKey";
 
 const Cast = () => {
-  const [fetchedDetails, setFetchedDetails] = useState([]);
+  const [fetchedDetails, setFetchedDetails] = useState(0);
   const [error, setError] = useState(null);
   const { movieId } = useParams();
 
@@ -30,7 +30,7 @@ const Cast = () => {
 
       <ul>
         {fetchedDetails &&
-          fetchedDetails.map(({ name, cast_id, character, profile_path }) => (
+          (fetchedDetails.map(({ name, cast_id, character, profile_path }) => (
             <li key={cast_id}>
               <img
                 src={`https://image.tmdb.org/t/p/w200${profile_path}`}
@@ -40,7 +40,7 @@ const Cast = () => {
               <p>{name}</p>
               <p>Character: {character}</p>
             </li>
-          ))}
+          )))}
       </ul>
     </div>
   );

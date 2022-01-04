@@ -7,14 +7,14 @@ import style from "./MovieDetailsPage.module.css"
 const MovieDetailsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [fetchedMovie, setFetchedMovie] = useState([]);
+  const [fetchedMovie, setFetchedMovie] = useState(0);
   const [error, setError] = useState(null);
   const [fromPage, setFromPage] = useState(null);
   const { movieId } = useParams();
 
   
   useEffect(() => {
-    setFromPage(location.state.from);  
+    setFromPage(location.state.from);
     getApiData(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}`)
       .then((data) => {
         console.log("pobrano z Api by ID:", data);
@@ -24,10 +24,9 @@ const MovieDetailsPage = () => {
         console.log("moj log z error.name", err.name);
         setError(err);
       });
-  }, []);
-
-  console.log("location from", fromPage);
-  console.log("currently", location);
+    }, []);
+    
+    console.log("fetchedMovie?", fetchedMovie);
 
   const goBack = () => {
        navigate(fromPage);   
@@ -42,6 +41,7 @@ const MovieDetailsPage = () => {
     genres,
   } = fetchedMovie;
   // const year = release_date.slice(0, 4);
+
   return (
     <div className={style.movieDetailsContainer}>
       <button onClick={goBack}>&larr; Go back</button>
@@ -56,15 +56,16 @@ const MovieDetailsPage = () => {
         </div>
         <div className={style.movieDetails}>
           <h1>
-            {/* {original_title} ({release_date.slice(0, 4)}) */}
+            {original_title} ({release_date.slice(0, 4)})
             {/* {original_title} ({year}) */}
-            {original_title} ({release_date})
+            {/* {original_title} ({release_date}) */}
           </h1>
           <p>User Score: {((vote_average / 10) * 100).toFixed()}%</p>
           <h2>Overview</h2>
           <p>{overview}</p>
           <h3>Genres</h3>
-          {/* <p>{genres.map((g) => g.name).join(", ")}</p> */}
+          {/* {genres} */}
+          <p>{genres.map((g) => g.name).join(", ")}</p>
         </div>
       </div>
       )}
@@ -85,15 +86,3 @@ const MovieDetailsPage = () => {
 };
 
 export default MovieDetailsPage;
-
-////////////////////////////// to bylo w goBack
-//  if (location.pathname !== "/movies/id") {
-//       console.log("if location2", location.pathname);
-//       navigate(-1);
-//     }
-
-//     if (location.pathname === "/movies/id") {
-//       console.log("if location - pathname === /movies/id", location.pathname);
-
-//       navigate(-1);
-//     }
