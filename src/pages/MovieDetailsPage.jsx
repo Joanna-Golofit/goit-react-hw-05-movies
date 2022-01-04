@@ -9,31 +9,12 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const [fetchedMovie, setFetchedMovie] = useState([]);
   const [error, setError] = useState(null);
+  const [fromPage, setFromPage] = useState(null);
   const { movieId } = useParams();
 
-
-
-  const goBack = () => {
-      console.log("if location0", location.pathname);
-
-    navigate(-1);
-    if (
-      location.pathname === `/movies/${movieId}/cast` ||
-      location.pathname === `/movies/${movieId}/reviews`
-    ) {
-      console.log("if location1", location.pathname);
-      navigate(-1);
-    }
-    // if (
-    //   location.pathname === `/movies/${movieId}`
-    // ) {
-    //   console.log("if location2", location.pathname);
-    //   navigate(-1);
-    // }
-   
-  }
-
+  
   useEffect(() => {
+    setFromPage(location.state.from);  
     getApiData(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}`)
       .then((data) => {
         console.log("pobrano z Api by ID:", data);
@@ -45,7 +26,12 @@ const MovieDetailsPage = () => {
       });
   }, []);
 
-  console.log("currently", location.pathname);
+  console.log("location from", fromPage);
+  console.log("currently", location);
+
+  const goBack = () => {
+       navigate(fromPage);   
+  }
 
   const {
     original_title,
@@ -61,7 +47,7 @@ const MovieDetailsPage = () => {
       <button onClick={goBack}>&larr; Go back</button>
       {/* MovieDetailsPage */}
       {error && <p>Whoops, something went wrong: {error.message}</p>}
-      <div className={style.movie}>
+      {fetchedMovie && (<div className={style.movie}>
         <div className={style.movieImg}>
           <img
             src={`https://image.tmdb.org/t/p/w200${poster_path}`}
@@ -81,6 +67,7 @@ const MovieDetailsPage = () => {
           {/* <p>{genres.map((g) => g.name).join(", ")}</p> */}
         </div>
       </div>
+      )}
       <hr />
       <p>Additional information</p>
       <ul>

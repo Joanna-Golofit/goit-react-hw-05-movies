@@ -23,8 +23,8 @@ const MoviesPage = () => {
     )
       .then((data) => {
         console.log("data.results z Api-query:", data.results);
-        console.log("fetchedMovies z Api-query:", fetchedMovies);
         setFetchedMovies(data.results);
+        // console.log("fetchedMovies z Api-query:", fetchedMovies);
       })
       .catch((err) => {
         console.log("moj log z error.name", err.name);
@@ -74,7 +74,14 @@ const MoviesPage = () => {
       <ul>
         {fetchedMovies.map((movie) => (
           <li key={movie.id}>
-            <Link to={`${movie.id}`}>{movie.original_title}</Link>
+            <Link
+              to={`${movie.id}`}
+              state={{
+                from: `/movies?title=${searchTerm}`
+              }}
+            >
+              {movie.original_title}
+            </Link>
           </li>
         ))}
       </ul>

@@ -22,8 +22,6 @@ const Reviews = () => {
       });
   }, [movieId]);
 
-  console.log("cos pobrano reviews?", fetchedDetails);
-
   // const { author } = fetchedDetails;
   return (
     <div>

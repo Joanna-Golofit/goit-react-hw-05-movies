@@ -16,21 +16,24 @@ const HomePage = () => {
       .catch((err) => {
         console.log("moj log z error.name", err.name);
         setError(err);
-      })
+      });
   }, []);
   return (
     <div>
       {/* HomePage - strona domowa z listą popularnych filmów. */}
       {error && <p>Whoops, something went wrong: {error.message}</p>}
       <h1>Trending today</h1>
-      <ul>       
+      <ul>
         {fetchedMovies.map((movie) => (
-         <li key={movie.id}>
-           <Link to={`movies/${movie.id}`}>
-        {movie.original_title}
+          <li key={movie.id}>
+            <Link
+              to={`movies/${movie.id}`}
+              state={{ from: "/" }}
+            >
+              {movie.original_title}
             </Link>
-        </li> 
-         ))}     
+          </li>
+        ))}
       </ul>
     </div>
   );
