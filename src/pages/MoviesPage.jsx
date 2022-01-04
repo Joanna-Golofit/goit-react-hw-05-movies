@@ -44,6 +44,7 @@ const MoviesPage = () => {
         console.log("moj log z error.name", err.name);
         setError(err);
       });
+    // eslint-disable-next-line
   }, []);
 
   const handleFilter = (e) => {

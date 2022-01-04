@@ -24,7 +24,8 @@ const MovieDetailsPage = () => {
         console.log("moj log z error.name", err.name);
         setError(err);
       });
-    }, []);
+    // eslint-disable-next-line
+  }, []);
     
     // console.log("fetchedMovie?", fetchedMovie);
 
