@@ -1,4 +1,10 @@
 # goit-react-hw-05-movies
+
+useEffect, useState
+routing: useParams, useSearchParams, NavLink, Link, Outlet, useLocation, useNavigate,
+Code Splitting: lazy() i <Suspense>
+API themoviedb.org, 
+
 https://github.com/goitacademy/react-homework/blob/master/homework-04/README.pl.md 
 
 
@@ -7,7 +13,7 @@ https://github.com/goitacademy/react-homework/blob/master/homework-04/README.pl.
  "predeploy": "npm run build",
  "deploy": "gh-pages -d build"
 
-routing, Code Splitting, API themoviedb.org, propTypes, 
+
 
 
 # Getting Started with Create React App
