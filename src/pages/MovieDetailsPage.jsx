@@ -17,7 +17,7 @@ const MovieDetailsPage = () => {
     setFromPage(location.state.from);
     getApiData(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}`)
       .then((data) => {
-        console.log("pobrano z Api by ID:", data);
+        // console.log("pobrano z Api by ID:", data);
         setFetchedMovie(() => data);
       })
       .catch((err) => {
@@ -26,7 +26,7 @@ const MovieDetailsPage = () => {
       });
     }, []);
     
-    console.log("fetchedMovie?", fetchedMovie);
+    // console.log("fetchedMovie?", fetchedMovie);
 
   const goBack = () => {
        navigate(fromPage);   

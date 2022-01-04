@@ -13,7 +13,7 @@ const Reviews = () => {
       `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${KEY}`
     )
       .then((data) => {
-        console.log("pobrano z Api - reviews:", data.results);
+        // console.log("pobrano z Api - reviews:", data.results);
         setFetchedDetails(data.results);
       })
       .catch((err) => {

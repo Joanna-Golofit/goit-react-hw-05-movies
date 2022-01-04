@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     getApiData(TRENDING)
       .then((data) => {
-        console.log("pobrano z Api:", data.results);
+        // console.log("pobrano z Api:", data.results);
         setFetchedMovies(() => data.results);
       })
       .catch((err) => {

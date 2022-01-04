@@ -13,7 +13,7 @@ const Cast = () => {
       `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${KEY}`
     )
       .then((data) => {
-        console.log("pobrano z Api - cast:", data.cast);
+        // console.log("pobrano z Api - cast:", data.cast);
         setFetchedDetails(() => data.cast);
       })
       .catch((err) => {

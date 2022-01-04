@@ -2,11 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { getApiData } from "../utils/apiCalls";
 import { KEY } from "../utils/apiKey";
-// import Cast from "../components/Cast";
-// import Reviews from "../components/Reviews";
 
 const MoviesPage = () => {
-  // const [wordEntered, setWordEntered] = useState("");
   const [fetchedMovies, setFetchedMovies] = useState([]);
   const [error, setError] = useState(null);
 
@@ -22,7 +19,6 @@ const MoviesPage = () => {
       `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=${searchTerm}`
     )
       .then((data) => {
-        console.log("data.results z Api-query:", data.results);
         setFetchedMovies(data.results);
         // console.log("fetchedMovies z Api-query:", fetchedMovies);
       })
@@ -41,7 +37,7 @@ const MoviesPage = () => {
       `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=${searchTerm}`
     )
       .then((data) => {
-        console.log("pobrano z Api:", data.results);
+        // console.log("pobrano z Api:", data.results);
         setFetchedMovies(() => data.results);
       })
       .catch((err) => {

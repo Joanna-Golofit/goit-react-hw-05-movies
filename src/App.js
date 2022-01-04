@@ -1,10 +1,11 @@
-import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Cast from "./components/Cast";
-import Reviews from "./components/Reviews";
-import HomePage from "./pages/HomePage";
-import MovieDetailsPage from "./pages/MovieDetailsPage";
-import MoviesPage from "./pages/MoviesPage";
+import { BrowserRouter, NavLink, Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
+const LazyCast = lazy(() => import("./components/Cast"));
+const LazyReviews = lazy(() => import("./components/Reviews"));
+const LazyHomePage = lazy(() => import("./pages/HomePage"));
+const LazyMovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
+const LazyMoviesPage = lazy(() => import("./pages/MoviesPage"));
 
 function App() {
   return (
@@ -47,25 +48,20 @@ function App() {
         </NavLink>
       </nav>
       <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-            {/* <Route path="/movies/id" element={<MovieDetailsPage />}> */}
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-          <Route path="*" element={<HomePage />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<LazyHomePage />} />
+            <Route path="/movies" element={<LazyMoviesPage />} />
+            <Route path="/movies/:movieId" element={<LazyMovieDetailsPage />}>
+              <Route path="cast" element={<LazyCast />} />
+              <Route path="reviews" element={<LazyReviews />} />
+            </Route>
+            <Route path="*" element={<LazyHomePage />} />
+          </Routes>
+        </Suspense>
       </div>
     </BrowserRouter>
   );
 }
 
 export default App;
-
-// '/' - komponent <HomePage>, strona domowa z listą popularnych filmów.
-// '/movies' - komponent <MoviesPage>, strona wyszukiwania filmów po słowie kluczu.
-// '/movies/:movieId' - komponent <MovieDetailsPage>, strona ze szczegółowymi informacjami o filmie.
-// /movies/:movieId/cast - komponent <Cast>, informacja o zespole aktorskim. Renderuje się na stronie <MovieDetailsPage>.
-// /movies/:movieId/reviews - komponent <Reviews>, informacja o recenzjach. Renderuje się n stronie <MovieDetailsPage>.
