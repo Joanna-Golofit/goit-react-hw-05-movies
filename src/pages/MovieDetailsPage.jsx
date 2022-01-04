@@ -18,7 +18,7 @@ const MovieDetailsPage = () => {
     getApiData(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${KEY}`)
       .then((data) => {
         console.log("pobrano z Api by ID:", data);
-        setFetchedMovie(data);
+        setFetchedMovie(() => data);
       })
       .catch((err) => {
         console.log("moj log z error.name", err.name);

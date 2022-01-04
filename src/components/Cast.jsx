@@ -14,33 +14,33 @@ const Cast = () => {
     )
       .then((data) => {
         console.log("pobrano z Api - cast:", data.cast);
-        setFetchedDetails(data.cast);
+        setFetchedDetails(() => data.cast);
       })
       .catch((err) => {
         console.log("moj log z error.name", err.name);
         setError(err);
       });
-  }, [movieId]);
+  }, []);
 
   return (
     <div>
       {/* Cast component */}
       {error && <p>Whoops, something went wrong: {error.message}</p>}
-      {fetchedDetails.length === 0 && "No data to be shown.."}
+      {!fetchedDetails && "No data to be shown.."}
 
       <ul>
         {fetchedDetails &&
-          (fetchedDetails.map(({ name, cast_id, character, profile_path }) => (
+          fetchedDetails.map(({ name, cast_id, character, profile_path }) => (
             <li key={cast_id}>
               <img
-                src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+                src={`https://image.tmdb.org/t/p/w300${profile_path}`}
                 width="80"
                 alt={name}
               />
               <p>{name}</p>
               <p>Character: {character}</p>
             </li>
-          )))}
+          ))}
       </ul>
     </div>
   );

@@ -11,7 +11,7 @@ const HomePage = () => {
     getApiData(TRENDING)
       .then((data) => {
         console.log("pobrano z Api:", data.results);
-        setFetchedMovies(data.results);
+        setFetchedMovies(() => data.results);
       })
       .catch((err) => {
         console.log("moj log z error.name", err.name);
