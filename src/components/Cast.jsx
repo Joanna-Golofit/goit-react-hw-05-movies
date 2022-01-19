@@ -13,8 +13,8 @@ const Cast = () => {
       `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${KEY}`
     )
       .then((data) => {
-        // console.log("pobrano z Api - cast:", data.cast);
-        setFetchedDetails(() => data.cast);
+        console.log("pobrano z Api - cast:", data.cast);
+        setFetchedDetails(data.cast || 0);
       })
       .catch((err) => {
         console.log("moj log z error.name", err.name);
@@ -30,11 +30,13 @@ const Cast = () => {
       {!fetchedDetails && "No data to be shown.."}
 
       <ul>
-        {fetchedDetails &&
+        {fetchedDetails !== 0 &&
+          !error &&
           fetchedDetails.map(({ name, cast_id, character, profile_path }) => (
             <li key={cast_id}>
               <img
-                src={`https://image.tmdb.org/t/p/w300${profile_path}`}
+                src={
+                  profile_path && `https://image.tmdb.org/t/p/w300${profile_path}` }
                 width="80"
                 alt={name}
               />
